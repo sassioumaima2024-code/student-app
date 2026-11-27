@@ -21,7 +21,7 @@ public class App {
                 if (ex.getRequestURI().getPath().equals("/add") && q != null && q.startsWith("name=")) {
                     dao.add(URLDecoder.decode(q.substring(5), StandardCharsets.UTF_8));
                 }
-                body = "Etudiants : " + dao.findAll() + "\nConteneur : " + InetAddress.getLocalHost().getHostName();
+                body = "Etudiants : " + dao.findAll() + "\nConteneur : " + System.getenv().getOrDefault("HOSTNAME", "inconnu");
             } catch (Exception e) {
                 code = 500;
                 StringWriter sw = new StringWriter();
